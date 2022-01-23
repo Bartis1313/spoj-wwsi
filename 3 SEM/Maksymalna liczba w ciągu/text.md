@@ -1,0 +1,1 @@
+Nie mam tresci juz
