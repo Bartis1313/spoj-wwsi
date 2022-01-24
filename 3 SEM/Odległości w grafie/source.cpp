@@ -17,20 +17,16 @@ void FW(int** graph, int size)
     {
         for (int j = 0; j < size; j++)
         {
-            dist[i][j] = MAX_INT;
-
-        }
-        dist[i][i] = 0;
-    }
-    for (int i = 0; i < size; i++)
-    {
-        for (int j = 0; j < size; j++)
-        {
             if (graph[i][j] == 1)
             {
                 dist[i][j] = 1;
             }
+            else
+            {
+                dist[i][j] = MAX_INT;
+            }
         }
+        dist[i][i] = 0;
     }
 
     for (int i = 0; i < size; i++)
@@ -82,7 +78,7 @@ int main()
 
         int _max = 0;
 
-        for (int j = 0; j < m; j++)
+        for (int i = 0; i < m; i++)
         {
             std::pair<int, int> p;
             std::cin >> p.first >> p.second;
