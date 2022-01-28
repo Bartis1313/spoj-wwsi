@@ -3,7 +3,6 @@
 #include <vector>
 #include <algorithm>
 #include <iomanip>
-#include <utility>
 
 int levenshtein(const std::string& first, const std::string& second)
 {
@@ -16,37 +15,37 @@ int levenshtein(const std::string& first, const std::string& second)
     int firstLen = first.length();
     int secondLen = second.length();
 
-    std::vector<std::pair<int, int>> rows(secondLen + 1);
-    for (int i = 0; i < rows.size(); i++)
-        rows.at(i).first = i;
+    std::vector<int> rows(secondLen + 1);
+    for (int i = 0; i < secondLen + 1; i++)
+    {
+        rows.at(i) = i;
+    }
 
     for (int i = 0; i < firstLen; i++)
     {
-        rows.at(0).second = i + 1;
+        rows.at(0) = i + 1;
+
+        int edge = i;
 
         for (int j = 0; j < secondLen; j++)
         {
-            int cost;
+            int upper = rows.at(j + 1);
+
             if (first[i] == second[j])
-                cost = 0;
-            else
-                cost = 1;
-
-            std::vector<int> temp =
             {
-                rows.at(j).second + 1,
-                rows.at(j + 1).first + 1,
-                rows.at(j).first + cost
-            };
+                rows.at(j + 1) = edge;
+            }
+            else
+            {
+                int cost = upper < edge ? upper : edge;
+                rows.at(j + 1) = (rows.at(j) < cost ? rows.at(j) : cost) + 1;
+            }
 
-            rows.at(j + 1).second = *std::min_element(temp.begin(), temp.end());
+            edge = upper;
         }
-
-        for (auto& row : rows)
-            row.first = row.second;
     }
 
-    return rows.at(secondLen).second;
+    return rows.at(secondLen);
 }
 
 int main()
@@ -54,12 +53,16 @@ int main()
     std::string temp;
     std::vector<std::string> vec;
 
-    while (std::getline(std::cin >> std::ws, temp))
+    //int c = 0;
+    while (std::cin >> temp) // bo spoj mi wywala na getline :)
     {
         vec.push_back(temp);
+
+        /*if (vec.size() == 7)
+            break;*/
     }
 
-    std::cout << "\n";
+    //std::cout << "\n";
 
     for (int i = 0; i < vec.size(); i++)
     {
@@ -82,26 +85,33 @@ int main()
     }
     std::cout << "\n";
 
+    int** matrix = new int* [vec.size()];
     for (int i = 0; i < vec.size(); i++)
     {
-        std::cout << i + 1 << " | ";      
+        matrix[i] = new int[vec.size()];
+    }
+
+    for (int i = 0; i < vec.size(); i++)
+    {
+        std::cout << i + 1 << " | ";
 
         for (int j = 0; j < vec.size(); j++)
-        {           
-           std::cout << levenshtein(vec.at(i), vec.at(j)) << " ";
+        {
+            matrix[i][j] = levenshtein(vec.at(i), vec.at(j));
+
+            std::cout << matrix[i][j] << " ";
         }
         std::cout << "\n";
     }
 
     std::cout << "\n";
-    
+
     std::cout.precision(3);
     for (int i = 0; i < vec.size(); i++)
     {
         for (int j = 0; j < vec.size(); j++)
-        {           
-
-            float leven = static_cast<float>(levenshtein(vec.at(i), vec.at(j)));
+        {
+            float leven = matrix[i][j];
             auto max = std::max(vec.at(i).length(), vec.at(j).length());
 
             float wynik = 1 - (leven / max);
