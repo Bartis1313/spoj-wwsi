@@ -2,3 +2,5 @@
 2. Gdzie mam vector ``toWrite`` mozesz wypisywac od razu, bedzie szybciej
 
 Kod napisany tak aby przeszedl
+<br />
+17/17pkt
