@@ -4,3 +4,5 @@
 Kod napisany tak aby przeszedl
 <br />
 17/17pkt
+
+Dla 5 sem, publikuje zadania PO terminie na git'ie. Ze względu na możliwą dyskwalifikacje.
