@@ -1,8 +1,10 @@
 1. Gdzie usuwam pamiec, usun to. Zbedne na spoju
 2. Gdzie mam vector ``toWrite`` mozesz wypisywac od razu, bedzie szybciej
 
-Kod napisany tak aby przeszedl
-<br />
-17/17pkt
+### 1
+- 17/17pkt
 
-Dla 5 sem, publikuje zadania PO terminie na git'ie. Ze względu na możliwą dyskwalifikacje.
+### 2
+- 11/13pkt
+
+Kod kompletnie napisany tak, aby tylko przeszedł. W niektórych zadaniach nie ma zdjęć.

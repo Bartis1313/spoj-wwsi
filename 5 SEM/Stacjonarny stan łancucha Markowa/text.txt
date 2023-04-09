@@ -1,0 +1,1 @@
+Kompletenie nie wiem, chyba chodzi o rozkład QR bo macierz nie będzie symetryczna.

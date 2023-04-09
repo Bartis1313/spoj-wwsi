@@ -1,0 +1,1 @@
+tu to zadanie jest zle, za mala precyzja, albo metodyka. Co mozna zrobic to albo zwiekszyc step precyzji, albo inaczej to liczyc (nie mam pojecia jak)
